@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #121110;
+  --color-bg-alt: #171613;
+  --color-card: #1c1b18;
+  --color-card-alt: #201f1b;
+  --color-border: #2e2c27;
+  --color-gold: #cda35c;
+  --color-gold-light: #e0c184;
+  --color-cream: #f4f1ea;
+  --color-muted: #a79f92;
+}
+
+/* @theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-card: var(--color-card);
+  --color-card-alt: var(--color-card-alt);
+  --color-border: var(--color-border);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-cream: var(--color-cream);
+  --color-muted: var(--color-muted);
+
+  --font-serif: "Playfair Display", "Iowan Old Style", Georgia, serif;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+} */
+
+@theme inline {
+  --color-atlas-bg: #121411;
+  --color-atlas-bgLogin: #17191c;
+  --color-atlas-loginCard: #202327;
+  --color-atlas-surface: #1e201d;
+  --color-atlas-surface2: #272926;
+  --color-atlas-surface3: #292a27;
+  --color-atlas-surface4: #333532;
+
+  --color-atlas-border: #4d4639;
+  --color-atlas-borderMuted: #373936;
+
+  --color-atlas-gold: #c8a45d;
+  --color-atlas-goldLight: #e8c177;
+  --color-atlas-goldDark: #513a00;
+  --color-atlas-goldDark2: #402d00;
+
+  --color-atlas-text: #e2e3de;
+  --color-atlas-textMuted: #d1c5b4;
+  --color-atlas-textPlaceholder: #6b7280;
+  --color-atlas-danger: #ffb4ab;
+
+  --font-serif: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.form-input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--atlas-border);
+  background: var(--atlas-bg);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--atlas-text);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.form-input::placeholder {
+  color: var(--atlas-textPlaceholder);
+}
+
+.form-input:focus {
+  border-color: var(--atlas-gold);
+}

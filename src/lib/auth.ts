@@ -1,0 +1,17 @@
+const TOKEN_KEY = "atlas_admin_token";
+const USER_KEY = "atlas_admin_user";
+
+export function saveSession(token: string, user: unknown) {
+  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+
+export function getToken(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+export function clearSession() {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(USER_KEY);
+}
