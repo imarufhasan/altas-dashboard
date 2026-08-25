@@ -13,6 +13,8 @@ export type SiteSettings = {
   publicPhone: string;
 };
 
+export type PageStatus = "published" | "draft" | "hidden";
+
 export type StatTrend = "up" | "down" | "flat";
 
 export type DashboardStat = {
