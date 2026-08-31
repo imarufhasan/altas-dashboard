@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutGrid,
   FileText,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { LogoutModal } from "./LogoutModal";
+import Image from "next/image";
 
 type SidebarProps = {
   isOpen?: boolean;
@@ -25,13 +26,27 @@ const navItems = [
   { href: "/pages", label: "Pages", icon: FileText },
   { href: "/insights", label: "Insights", icon: BarChart3 },
   { href: "/inquiries", label: "Inquiries", icon: HelpCircle },
-  { href: "/legal-content", label: "Legal Content", icon: Scale },
+  { href: "/legal", label: "Legal Content", icon: Scale },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
 export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
+  
   const pathname = usePathname();
+  const router = useRouter();
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogoClick = () => {
+    onClose?.();
+
+    if (pathname === "/dashboard") {
+      window.location.reload();
+      return;
+    }
+
+    router.push("/dashboard");
+  };
 
   return (
     <>
@@ -44,18 +59,23 @@ export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           lg:translate-x-0
         `}
       >
-        <div className="flex items-start justify-between px-6 pb-6 pt-7">
-          <div>
-            <h1 className="font-serif text-2xl leading-tight text-atlas-gold">
-              ATLAS
-              <br />
-              ADMIN
-            </h1>
+        <div className="flex items-center justify-between px-6 pb-6 pt-7">
+          <button
+            type="button"
+            onClick={handleLogoClick}
+            className="block cursor-pointer"
+            aria-label="Go to Dashboard"
+          >
+            <Image
+              src="/logo.png"
+              alt="Project Logo"
+              width={170}
+              height={48}
+              priority
+              className="h-auto max-h-12 w-auto max-w-42.5 object-contain"
+            />
+          </button>
 
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-atlas-textMuted">
-              Executive Control
-            </p>
-          </div>
 
           <button
             onClick={onClose}

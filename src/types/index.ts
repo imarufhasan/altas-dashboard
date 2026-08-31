@@ -4,14 +4,14 @@ export type AdminUser = {
   role: string;
 };
 
-export type SiteSettings = {
-  websiteName: string;
-  websiteStatus: string;
-  defaultContentVisibility: string;
-  unreleasedContent: string;
-  publicContactEmail: string;
-  publicPhone: string;
-};
+// export type SiteSettings = {
+//   websiteName: string;
+//   websiteStatus: string;
+//   defaultContentVisibility: string;
+//   unreleasedContent: string;
+//   publicContactEmail: string;
+//   publicPhone: string;
+// };
 
 export type PageStatus = "published" | "draft" | "hidden";
 
@@ -33,11 +33,7 @@ export type ContentType =
   | "Case Study"
   | "Report";
 
-export type ContentStatus =
-  | "published"
-  | "draft"
-  | "hidden"
-  | "archived";
+export type ContentStatus = "published" | "draft" | "hidden" | "archived";
 
 export type RecentChangeAction =
   | "Published"
@@ -72,3 +68,21 @@ export type DashboardData = {
   stats: DashboardStat[];
   recentChanges: RecentChangesResponse;
 };
+
+export type SiteSettings = {
+  websiteName: string;
+  websiteStatus: "Active" | "Maintenance" | "Offline";
+  defaultContentVisibility: "Public" | "Private";
+  unreleasedContent: "Hidden from Public" | "Visible to Public";
+  publicContactEmail: string;
+  publicPhone: string;
+  tagline?: string;
+  timezone?: string;
+};
+
+export type PasswordChangePayload = {
+  currentPassword: string;
+  newPassword: string;
+};
+
+export type ApiResult = { success: boolean; message: string };

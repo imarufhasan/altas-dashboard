@@ -37,14 +37,14 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <button className="rounded-md bg-atlas-gold px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-atlas-bg transition-colors hover:bg-atlas-goldLight">
             Manage Pages
           </button>
           <button className="rounded-md border border-atlas-border px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-atlas-text transition-colors hover:bg-atlas-surface">
             Create Insight
           </button>
-        </div>
+        </div> */}
       </div>
 
       {isLoading || !data ? (
