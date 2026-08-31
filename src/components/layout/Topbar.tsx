@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { dummyUser } from "@/src/lib/dummy-data";
 import { clearSession } from "@/src/lib/auth";
 import { Modal } from "../ui/Modal";
+import { ConfirmModal } from "../ui/ConfirmModal";
 
 type TopbarProps = {
   onMenuClick: () => void;
@@ -21,7 +22,7 @@ type TopbarProps = {
 
 export function Topbar({ onMenuClick }: TopbarProps) {
   const router = useRouter();
-
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
@@ -142,7 +143,10 @@ export function Topbar({ onMenuClick }: TopbarProps) {
                 </button>
 
                 <button
-                  onClick={logout}
+                  onClick={() => {
+                    setShowLogoutConfirm(true);
+                    setShowProfile(false);
+                  }}
                   className="flex w-full items-center gap-3 border-t border-atlas-border px-4 py-3 text-sm text-red-300 hover:bg-red-500/10"
                 >
                   <LogOut className="size-4" />
@@ -174,6 +178,15 @@ export function Topbar({ onMenuClick }: TopbarProps) {
           </div>
         </div>
       </Modal>
+
+      <ConfirmModal
+        open={showLogoutConfirm}
+        onClose={() => setShowLogoutConfirm(false)}
+        onConfirm={logout}
+        title="Log Out?"
+        description="Are you sure you want to log out of your administrator account?"
+        confirmText="Log Out"
+      />
     </>
   );
 }
