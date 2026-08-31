@@ -1,5 +1,6 @@
 import { dummyDashboardData, dummySettings, dummyUser } from "./dummy-data";
 import { AdminUser, DashboardData, SiteSettings } from "@/src/types";
+import { PasswordChangePayload, ApiResult } from "@/src/types";
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -69,4 +70,16 @@ export async function updateSiteSettings(
     message: "Settings updated successfully.",
     data: payload,
   };
+}
+
+export async function updatePassword(
+  payload: PasswordChangePayload,
+): Promise<ApiResult> {
+  await new Promise((r) => setTimeout(r, 900));
+
+  if (payload.currentPassword.length < 4) {
+    return { success: false, message: "Current password is incorrect." };
+  }
+
+  return { success: true, message: "Your password has been updated." };
 }
